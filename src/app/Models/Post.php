@@ -15,4 +15,8 @@ class Post extends Model
         'title',
         'content',
     ];
+
+    public function files() {
+        return $this->hasMany(File::class);
+    }
 }
