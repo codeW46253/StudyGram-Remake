@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PublicSectionController;
 // use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
@@ -11,6 +12,7 @@ Route::get('/', function () {
 
 // DashboardController
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('public_section', [PublicSectionController::class, 'index']);
 
 // AuthController - Log In
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
