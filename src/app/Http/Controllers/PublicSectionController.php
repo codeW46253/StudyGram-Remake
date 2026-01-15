@@ -10,7 +10,9 @@ use App\Models\Post;
 class PublicSectionController extends Controller
 {
     public function index() {
-        $posts = Post::orderBy("created_at","desc")->paginate(10);
+        $posts = Post::with('user')
+            ->orderBy("created_at","desc")
+            ->paginate(10);
 
         return view("public_section", [
             'posts' => $posts,

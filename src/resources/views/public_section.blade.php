@@ -8,8 +8,30 @@
     <div class="row">
         <div class="col-md-8">
             <!-- Header Section -->
-            <h2>Public Section</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Public Section</h2>
+                </div>
+            </div>
 
+            <!-- Create Post Button -->
+            <div class="row">
+                @auth
+                
+                <div class="col-md-8">
+                    <a href=" {{ url('/create_post') }} " class="btn btn-success">Create Post</a>
+                </div>
+                    
+                @else
+
+                <div class="col-md-8">
+                    <a class="btn btn-secondary">Create Post</a>
+                </div>
+                
+                @endauth
+            </div>
+
+            <!-- Post Section -->
             <div class="container border">
                 <div class="posts">
                     <div class="row">
@@ -20,6 +42,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $post->title }}</h5>
                                     <p class="card-text">{{ $post->content }}</p>
+                                    <p class="text-primary">Posted by {{ $post->user->name ?? 'No Name' }}</p>
 
                                     {{-- Loop through files --}}
                                     @if($post->files->count())
