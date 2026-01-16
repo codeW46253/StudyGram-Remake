@@ -11,8 +11,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// PostController
-Route::resource('posts', PostController::class);
+// UserController
+Route::get('account' , [UserController::class, 'showUserAccPage'])->middleware('auth');
+Route::resource('users', UserController::class);
+Route::put('users/{user}/password', [UserController::class, 'updatePassword'])
+    ->name('users.update_password');
 
 // DashboardController
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
