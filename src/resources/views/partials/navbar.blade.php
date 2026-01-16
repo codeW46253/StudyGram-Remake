@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu" aria-labelledby="sectionsDropdown">
                         <li><a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard</a></li>
                         <li><a class="dropdown-item" href="{{ url('/account') }}">User Account</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/public') }}">Public Section</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/public_section') }}">Public Section</a></li>
                         <li><a class="dropdown-item" href="{{ url('/admin') }}">Admin Control</a></li>
                     </ul>
                 </li>
