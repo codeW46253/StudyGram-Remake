@@ -4,11 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublicSectionController;
+use App\Http\Controllers\PostController;
 // use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// PostController
+Route::resource('posts', PostController::class);
 
 // DashboardController
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
