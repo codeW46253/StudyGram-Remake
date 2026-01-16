@@ -1,7 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+// use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// DashboardController
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// AuthController - Log In
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+
+// AuthController - Registration
+Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
+
+// AuthController - Log Out
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
