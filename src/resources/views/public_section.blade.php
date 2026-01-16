@@ -17,9 +17,12 @@
             <!-- Create Post Button -->
             <div class="row">
                 @auth
-                
+                <x-modal id="createPostModal" title="Create New Post">
+                    @include('partials.create_post')
+                </x-modal>
+
                 <div class="col-md-8">
-                    <a href=" {{ url('/create_post') }} " class="btn btn-success">Create Post</a>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
                 </div>
                     
                 @else
