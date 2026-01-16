@@ -3,11 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 // use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// UserController
+Route::get('account' , [UserController::class, 'showUserAccPage'])->middleware('auth');
+Route::resource('users', UserController::class);
+Route::put('users/{user}/password', [UserController::class, 'updatePassword'])
+    ->name('users.update_password');
 
 // DashboardController
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
