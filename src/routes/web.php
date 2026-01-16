@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublicSectionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 // use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
@@ -16,6 +17,9 @@ Route::get('account' , [UserController::class, 'showUserAccPage'])->middleware('
 Route::resource('users', UserController::class);
 Route::put('users/{user}/password', [UserController::class, 'updatePassword'])
     ->name('users.update_password');
+
+// PostController
+Route::resource('posts', PostController::class);
 
 // DashboardController
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
