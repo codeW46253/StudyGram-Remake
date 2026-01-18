@@ -21,6 +21,12 @@
             <input id="email" type="email" name="email" class="form-control" required>
         </div>
 
+        <!-- Phone -->
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input id="phone" type="tel" name="phone" class="form-control" required>
+        </div>
+
         <!-- Password -->
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
