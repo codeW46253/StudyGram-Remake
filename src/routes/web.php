@@ -6,10 +6,16 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublicSectionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 // use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// AdminController
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
 });
 
 // UserController
