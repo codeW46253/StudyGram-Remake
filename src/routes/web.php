@@ -23,6 +23,8 @@ Route::get('account' , [UserController::class, 'showUserAccPage'])->middleware('
 Route::resource('users', UserController::class);
 Route::put('users/{user}/password', [UserController::class, 'updatePassword'])
     ->name('users.update_password');
+Route::delete('users/{id}', [UserController::class, 'destroy'])
+    ->name('users.destroy');
 
 // PostController
 Route::resource('posts', PostController::class);
