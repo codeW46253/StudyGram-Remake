@@ -15,12 +15,6 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::first();
-
-	Post::create([
-            'user_id' => $user->id,
-            'title' => 'First Real Post',
-            'content' => 'This is stored in the database',
-	]);
+        Post::factory()->count(5)->create();
     }
 }
