@@ -17,11 +17,34 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // Admin Account
+        User::factory()->create([
+            'name'  => 'Test Admin',
+            'phone' => '+6012-3456789',
+            'email' => 'admin@example.com',
+            'password'=> bcrypt('admin123'),
+            'isAdmin'      => true,
+            'isModderator' => true,
+        ]);
+
+        // Moderator Account
+        User::factory()->create([
+            'name'  => 'Test Moderator',
+            'phone' => '+6012-3456789',
+            'email' => 'moderator@example.com',
+            'password'=> bcrypt('modd1234'),
+            'isAdmin'      => false,
+            'isModderator' => true,
+        ]);
+
+        // Regular User
         User::factory()->create([
             'name'  => 'Test User',
             'phone' => '+6012-3456789',
             'email' => 'test@example.com',
             'password'=> bcrypt('password'),
+            'isAdmin'      => false,
+            'isModderator' => false,
         ]);
     }
 }

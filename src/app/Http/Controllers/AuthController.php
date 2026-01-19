@@ -32,16 +32,20 @@ class AuthController extends Controller
     public function register(Request $request) {
         // Validate Input
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
+            'phone'    => 'required|string|max:20',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
         // Create user
         $user = User::create([
-             'name' => $request->name,
-             'email' => $request->email,
-             'password' => Hash::make($request->password),
+             'name'         => $request->name,
+             'email'        => $request->email,
+             'phone'        => $request->phone,
+             'password'     => Hash::make($request->password),
+             'isAdmin'      => false,
+             'isModderator' => false,
         ]);
 
         // Auto-login after registration

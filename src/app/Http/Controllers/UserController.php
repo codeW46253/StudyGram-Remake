@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
@@ -18,7 +20,23 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
         ]);
 
-        $user->update($request->only(['name','email', 'phone']));
+        if (Auth::user()->isAdmin && $request->adminControl == 1) {
+            $isModerator = $request->has('moderator');
+
+            $user->update([
+                'name'=> $request->input('name'),
+                'phone'=> $request->input('phone'),
+                'email'=> $request->input('email'),
+                'isModderator' => $isModerator,
+            ]);
+        } else {
+            $user->update([
+                'name'=> $request->input('name'),
+                'phone'=> $request->input('phone'),
+                'email'=> $request->input('email'),
+            ]);
+        }
+
 
         return redirect()->back()->with("success","Account Updated Successfully");
     }
@@ -37,5 +55,20 @@ class UserController extends Controller
     public function showUserAccPage()
     {
         return view('user_account');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        // Confirm admin password
+        if (!Hash::check($request->input('password'), Auth::user()->password))
+        {
+            return back()->withErrors(['password' => 'Invalid admin password.']);
+        }
+        
+        // Find and delete user
+        $user = User::findOrFail($id);
+        $user->delete();
+        
+        return back()->with('success', 'User deleted successfully.');
     }
 }

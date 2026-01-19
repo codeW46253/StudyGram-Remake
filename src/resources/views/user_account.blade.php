@@ -38,6 +38,14 @@
                             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#resetPasswordModal">Reset Password</button>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Is Admin</td>
+                        <td>{{ auth()->user()->isAdmin ? 'True' : 'False' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Is Modderator</td>
+                        <td>{{ auth()->user()->isModderator ? 'True' : 'False' }}</td>
+                    </tr>
                 </tbody>
             </table>
             <x-modal id="updateAccountModal" title="Update Account">
