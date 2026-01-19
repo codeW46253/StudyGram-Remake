@@ -18,10 +18,25 @@ class UserController extends Controller
             'name'  => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            ''      
         ]);
 
-        $user->update($request->only(['name','email', 'phone', 'isModderator']));
+        if (Auth::user()->isAdmin && $request->adminControl == 1) {
+            $isModerator = $request->has('moderator');
+
+            $user->update([
+                'name'=> $request->input('name'),
+                'phone'=> $request->input('phone'),
+                'email'=> $request->input('email'),
+                'isModderator' => $isModerator,
+            ]);
+        } else {
+            $user->update([
+                'name'=> $request->input('name'),
+                'phone'=> $request->input('phone'),
+                'email'=> $request->input('email'),
+            ]);
+        }
+
 
         return redirect()->back()->with("success","Account Updated Successfully");
     }
