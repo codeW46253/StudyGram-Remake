@@ -46,5 +46,7 @@ class DatabaseSeeder extends Seeder
             'isAdmin'      => false,
             'isModderator' => false,
         ]);
+
+        $this->call(PostSeeder::class);
     }
 }
