@@ -69,6 +69,9 @@
 
                         @endforeach
                     </div>
+                    <div class="pagination">
+                        {{ $posts->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>
