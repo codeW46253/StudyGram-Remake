@@ -19,12 +19,23 @@ Route::prefix('admin')->group(function () {
 });
 
 // UserController
+// Display Account Info
 Route::get('account' , [UserController::class, 'showUserAccPage'])->middleware('auth');
+
+// Define common routes:
+// GET[index]      | /users
+// GET[create]     | /users/create
+// POST[store]     | /users
+// GET[show]       | /users/{user}
+// GET[edit]       | /users/{user}/edit
+// PUT[update]     | /users/{user}
+// DELETE[destroy] | /users/{user}
 Route::resource('users', UserController::class);
+
+// Password Update
 Route::put('users/{user}/password', [UserController::class, 'updatePassword'])
     ->name('users.update_password');
-Route::delete('users/{id}', [UserController::class, 'destroy'])
-    ->name('users.destroy');
+
 
 // PostController
 Route::resource('posts', PostController::class);
