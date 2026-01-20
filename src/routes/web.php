@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -9,9 +10,7 @@ use App\Http\Controllers\UserController;
 // use App\Http\Controllers\PageController;
 
 // Welcome Page
-Route::get('', function () {
-    return view('home');
-});
+Route::get('', [HomeController::class, 'index']);
 // Uncomment this route to fall back to Laravel default main page
 // Route::get('/', function () {
 //     return view('welcome');
