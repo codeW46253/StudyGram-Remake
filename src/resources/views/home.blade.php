@@ -6,9 +6,10 @@
 
 <div class="container p-5 border">
     <div class="row">
-        <div class="col-md-8 bg-primary">
-            <div class="container text-center">
-                <h1 class="display-1 text-bg-primary lead">Welcome to StudyGram</h2>
+        <div class="col-md-12 bg-primary">
+            <div class="container text-center p-3">
+                <h1 class="display-1 text-bg-primary lead">StudyGram</h1>
+                <h3 class="text-bg-success p-3 mt-5">Share your ideas today!</h3>
             </div>
         </div>
     </div>
@@ -16,29 +17,18 @@
     <div class="row">
         <div class="col-md-6">
             <div class="container">
-                <h2 class="text-primary">About</h2>
-                <p class="text-break text-secondary">
-                    This web application was developed for students to share notes among each other.
-                </p>
-                <p class="text-break text-secondary">
-                    Users can use this web application for sharing notes.
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="container">
-                <h2 class="text-primary">Features</h2>
-                <p class="text-break text-secondary">
-                    Users can use features provided by this web application to form a discussion group beyond campus border
-                </p>
-                <p class="text-break text-secondary">
-                    <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item">Dashboard</li>
-                        <li class="list-group-item">Public Section</li>
-                        <li class="list-group-item">Comming Soon</li>
-                        <li class="list-group-item">Comming Soon</li>
-                    </ul>
-                </p>
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Status</h1>
+                    </div>
+                    <div class="card-body">
+                        <h2>Number of Posts:</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item">Today: {{ $todaysPostCount }}</li>
+                            <li class="list-group-item">This Month: {{ $monthsPostCount }}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
